@@ -90,29 +90,21 @@ public class BridgeBuildBoard : MonoBehaviour {
 	}
 	[RPC]
 	void DoBuild(NetworkViewID bridgeID, NetworkViewID platformID) {
-		GameObject grandParent = transform.parent.GetComponent<HasGrandParent>().grandParent;
-
-		Transform bridge = NetworkView.Find(bridgeID).transform;
-		bridge.position = buildPoint.position;
-		bridge.rotation = buildPoint.rotation;
-		bridge = bridge.Find("Bridge");
-
-		bridge.GetComponent<HasGrandParent>().grandParent = grandParent;
-		bridge.GetComponent<FakeFixedJoint>().lockTo = grandParent.transform;
+		Transform bridgeOrigin = NetworkView.Find(bridgeID).transform;
+		bridgeOrigin.position = buildPoint.position;
+		bridgeOrigin.rotation = buildPoint.rotation;
+		Transform bridge = bridgeOrigin.Find("Bridge");
+		bridgeOrigin.parent = transform.parent;
 
 		Transform platformPoint = bridge.Find("BuildPoint");
-		Transform platform = NetworkView.Find(platformID).transform;
-		platform.position = platformPoint.position;
-		platform.rotation = platformPoint.rotation;
-		platform = platform.Find("Platform");
+		Transform platformOrigin = NetworkView.Find(platformID).transform;
+		platformOrigin.position = platformPoint.position;
+		platformOrigin.rotation = platformPoint.rotation;
+		Transform platform = platformOrigin.Find("Platform");
+		platform.parent = transform.parent;
+		Destroy(platformOrigin.gameObject);
 
-		platform.GetComponent<HasGrandParent>().grandParent = grandParent;
-		platform.GetComponent<FakeFixedJoint>().lockTo = grandParent.transform;
-
-		bridge.hingeJoint.connectedBody = transform.parent.rigidbody;
-		HingeJoint[] platformJoints = platform.GetComponents<HingeJoint>();
-		platformJoints[0].connectedBody = bridge.rigidbody;
-		platformJoints[1].connectedBody = grandParent.rigidbody;
+		transform.root.rigidbody.mass += bridge.GetComponent<Mass>().value + platform.GetComponent<Mass>().value;
 
 		DoActivate(false);
 	}

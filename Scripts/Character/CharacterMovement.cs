@@ -63,10 +63,10 @@ public class CharacterMovement : MonoBehaviour {
 	}
 
 	void OnControllerColliderHit(ControllerColliderHit hit) {
-		HasGrandParent grandParent = hit.gameObject.GetComponent<HasGrandParent>();
-		if (grandParent != null) {
-			platformID = grandParent.GetCurrentID();
-			platform = grandParent.grandParent.transform;
+		Transform grandParent = hit.transform.root;
+		if (grandParent.rigidbody != null) {
+			platformID = grandParent.networkView.viewID;
+			platform = grandParent;
 			platformConnectionFactor = 1;
 		}
 	}

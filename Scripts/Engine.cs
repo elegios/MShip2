@@ -30,7 +30,14 @@ public class Engine : MonoBehaviour {
 		if (!on)
 			return;
 
-		transform.parent.parent.rigidbody.AddForce(transform.up * strength);
+		Vector3 force = transform.up * strength;
+		if (Mathf.Abs(force.y) > 0.1f) {
+			transform.root.rigidbody.AddForce(force);
+		} else {
+			Vector3 pos = transform.position;
+			pos.y = transform.root.position.y;
+			transform.root.rigidbody.AddForceAtPosition(force, pos);
+		}
 	}
 
 }
