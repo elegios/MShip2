@@ -93,7 +93,7 @@ public class CharacterMovement : MonoBehaviour {
 	}
 
 	void MoveWithPlatform() {
-		if (platformConnectionFactor == 0)
+		if (platformConnectionFactor == 0 || platform == null)
 			return;
 
 		Vector3 move = (platform.TransformPoint(localRelativePoint) - transform.position) * platformConnectionFactor;

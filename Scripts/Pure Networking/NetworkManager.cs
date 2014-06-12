@@ -38,7 +38,10 @@ public class NetworkManager : MonoBehaviour {
 	
 	void OnConnectedToServer() {
 		Debug.Log("Connected to server.");
-		Network.Instantiate(player, Vector3.up*10, Quaternion.identity, 0);
+		Network.Instantiate(player, Vector3.up*10 + Vector3.right*20, Quaternion.identity, 0);
+	}
+	void OnPlayerConnected(NetworkPlayer player) {
+		Network.Instantiate(stationBase, Vector3.right*20, Quaternion.identity, 0);
 	}
 	
 	void OnServerInitialized() {

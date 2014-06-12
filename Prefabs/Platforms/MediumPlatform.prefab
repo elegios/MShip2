@@ -11,6 +11,7 @@ GameObject:
   - 33: {fileID: 3300000}
   - 65: {fileID: 6500000}
   - 23: {fileID: 2300000}
+  - 114: {fileID: 11400000}
   m_Layer: 9
   m_Name: Platform
   m_TagString: Untagged
@@ -218,6 +219,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 487f6bec0a3754644a2e5209359d13a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  value: 1
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -237,6 +250,7 @@ MonoBehaviour:
   - {fileID: 100000, guid: 628cf22ba81b349c6925ecab07ce1e2d, type: 2}
   - {fileID: 100000, guid: 15e140ed3435f4fa98f070b4ab57a262, type: 2}
   - {fileID: 100000, guid: bdcb2d0e9dc7048298d6af506e949c0b, type: 2}
+  - {fileID: 100000, guid: cf86581a9fe234fa081e461bcab5279d, type: 2}
   togglePrefab: {fileID: 100000, guid: 4f55119347f394886bac161ece0fc4cf, type: 2}
   directionalBuilder: {fileID: 100008, guid: 85e3eeb762e774bcfb432854644e9b42, type: 2}
 --- !u!114 &11400004
