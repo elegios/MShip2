@@ -10,7 +10,8 @@ public class NetworkManager : MonoBehaviour {
 	public int maxConnections = 10;
 	
 	public GameObject player;
-	public GameObject stationBase;
+	public GameObject station;
+	public GameObject startPlatform;
 	
 	void OnGUI() {
 		if (!Network.isClient && !Network.isServer) {
@@ -41,13 +42,24 @@ public class NetworkManager : MonoBehaviour {
 		Network.Instantiate(player, Vector3.up*10 + Vector3.right*20, Quaternion.identity, 0);
 	}
 	void OnPlayerConnected(NetworkPlayer player) {
-		Network.Instantiate(stationBase, Vector3.right*20, Quaternion.identity, 0);
+		GameObject s = (GameObject) Network.Instantiate(station, Vector3.right*20, Quaternion.identity, 0);
+		GameObject p = (GameObject) Network.Instantiate(startPlatform, Vector3.right*20, Quaternion.identity, 0);
+		networkView.RPC("SetupNewStation", RPCMode.AllBuffered, s.networkView.viewID, p.networkView.viewID);
 	}
 	
 	void OnServerInitialized() {
 		Debug.Log("Server started.");
-		Network.Instantiate(stationBase, Vector3.zero, Quaternion.identity, 0);
+		GameObject s = (GameObject) Network.Instantiate(station, Vector3.zero, Quaternion.identity, 0);
+		GameObject p = (GameObject) Network.Instantiate(startPlatform, Vector3.zero, Quaternion.identity, 0);
+		networkView.RPC("SetupNewStation", RPCMode.AllBuffered, s.networkView.viewID, p.networkView.viewID);
 		Network.Instantiate(player, Vector3.up*10, Quaternion.identity, 0);
+	}
+
+	[RPC]
+	void SetupNewStation(NetworkViewID stationID, NetworkViewID platformID) {
+		Transform station = NetworkView.Find(stationID).transform;
+		Transform platform = NetworkView.Find(platformID).transform;
+		platform.parent = station;
 	}
 
 	[RPC]
