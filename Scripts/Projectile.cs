@@ -15,7 +15,12 @@ public class Projectile : MonoBehaviour {
 			return;
 
 		networkView.RPC("NetDestroyThis", RPCMode.All);
-		StationLink linkToDestroy = collision.contacts[0].otherCollider.gameObject.GetComponent<StationLink>();
+		GameObject other = collision.contacts[0].otherCollider.gameObject;
+		StationLink linkToDestroy = other.GetComponent<StationLink>();
+		if (linkToDestroy == null) {
+			if (other.GetComponent<RemoteStationLink>() != null)
+				linkToDestroy = other.GetComponent<RemoteStationLink>().link;
+		}
 		if (linkToDestroy != null) {
 			linkToDestroy.DoDestroy(rigidbody);
 		} else {

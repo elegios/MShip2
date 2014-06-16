@@ -78,7 +78,7 @@ public class StationLink : MonoBehaviour {
 		if (parent != null) {
 			parent.ChildWillBeDestroyed(this);
 		}
-		networkView.RPC("NetDestroy", RPCMode.AllBuffered, networkView.viewID);
+		networkView.RPC("NetDestroyThis", RPCMode.AllBuffered);
 	}
 
 	public void SetParent(StationLink parent) {
@@ -97,6 +97,11 @@ public class StationLink : MonoBehaviour {
 	void NetDestroy(NetworkViewID id) {
 		GameObject o = NetworkView.Find(id).gameObject;
 		Destroy(o);
+	}
+	[RPC]
+	void NetDestroyThis() {
+		GetComponent<Mass>().TransferMassTo(null);
+		Destroy(gameObject);
 	}
 
 	void Awake() {

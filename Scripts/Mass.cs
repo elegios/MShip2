@@ -8,13 +8,13 @@ public class Mass : MonoBehaviour {
 	private Rigidbody parent;
 
 	public void TransferMassTo(Rigidbody newParent) {
-		if (newParent == parent)
-			return;
 		if (parent != null)
 			parent.mass -= value;
 
-		newParent.mass += value;
 		parent = newParent;
+
+		if (newParent != null)
+			newParent.mass += value;
 	}
 
 }

@@ -27,6 +27,7 @@ GameObject:
   - 33: {fileID: 3300000}
   - 65: {fileID: 6500000}
   - 23: {fileID: 2300000}
+  - 114: {fileID: 11400004}
   m_Layer: 9
   m_Name: Collider
   m_TagString: Untagged
@@ -213,6 +214,18 @@ MonoBehaviour:
   - {fileID: 400006}
   buildBoardPrefab: {fileID: 100000, guid: 3baa0c5ea3f55437a9b6f4675d28cf49, type: 2}
   stationPrefab: {fileID: 100000, guid: 92acbfd556bad4afbb332bdbe8bae97b, type: 2}
+--- !u!114 &11400004
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9c577ec66581410398262aef9380e55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  link: {fileID: 11400002}
 --- !u!148 &14800000
 NetworkView:
   m_ObjectHideFlags: 1
