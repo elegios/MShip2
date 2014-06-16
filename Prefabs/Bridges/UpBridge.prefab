@@ -208,7 +208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f529bbd5ba314434b2dcfe091889237, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentPoint: {fileID: 0}
+  parentPoint: {fileID: 400006}
   childPoints:
   - {fileID: 400000}
   buildBoardPrefab: {fileID: 100000, guid: 3baa0c5ea3f55437a9b6f4675d28cf49, type: 2}

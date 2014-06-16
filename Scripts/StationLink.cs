@@ -16,6 +16,8 @@ public class StationLink : MonoBehaviour {
 	private StationLink parent;
 
 	void ParentWillBeDestroyed() {
+		transform.parent = null;
+
 		GameObject station = (GameObject) Network.Instantiate(stationPrefab, transform.position, transform.rotation, 0);
 		networkView.RPC("SetupStation", RPCMode.AllBuffered, station.networkView.viewID);
 
@@ -31,7 +33,7 @@ public class StationLink : MonoBehaviour {
 	}
 
 	void ChildWillBeDestroyed(StationLink child) {
-		int i = -1;
+		int i = 0;
 		while (i < childPoints.Length && children[i] != child)
 			i++;
 		if (i == childPoints.Length) {
@@ -57,7 +59,7 @@ public class StationLink : MonoBehaviour {
 		Destroy(buildBoards[i]);
 	}
 
-	public void DoDestroy() {
+	public void DoDestroy(Rigidbody projectile) {
 		if (!Network.isServer) {
 			print("This function should only be called on the server");
 			return;
@@ -72,7 +74,7 @@ public class StationLink : MonoBehaviour {
 		if (parent != null) {
 			parent.ChildWillBeDestroyed(this);
 		}
-		Destroy(gameObject);
+		networkView.RPC("NetDestroy", RPCMode.AllBuffered, networkView.viewID);
 	}
 
 	public void SetParent(StationLink parent) {
@@ -82,10 +84,16 @@ public class StationLink : MonoBehaviour {
 		}
 
 		if (parent != null) {
-			Destroy(buildBoards[buildBoards.Length - 1]);
+			networkView.RPC("NetDestroy", RPCMode.AllBuffered, buildBoards[buildBoards.Length - 1].networkView.viewID);
 			this.parent = parent;
 			//TODO: setup mass
 		}
+	}
+
+	[RPC]
+	void NetDestroy(NetworkViewID id) {
+		GameObject o = NetworkView.Find(id).gameObject;
+		Destroy(o);
 	}
 
 	void Awake() {
