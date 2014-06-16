@@ -9,7 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 400000}
   m_Layer: 0
-  m_Name: BuildPoint
+  m_Name: ParentPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,8 +27,10 @@ GameObject:
   - 65: {fileID: 6500000}
   - 23: {fileID: 2300000}
   - 114: {fileID: 11400000}
+  - 148: {fileID: 14800002}
+  - 114: {fileID: 11400002}
   m_Layer: 9
-  m_Name: Bridge
+  m_Name: StationPart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -50,18 +52,33 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &100006
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400006}
+  m_Layer: 0
+  m_Name: ChildPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &400000
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .529975057, y: -.155499876, z: -.00641835667}
-  m_LocalScale: {x: 1, y: 2.65043569, z: .359841585}
+  m_LocalRotation: {x: -.5, y: .5, z: .500000119, w: .49999994}
+  m_LocalPosition: {x: -.581425071, y: .716730952, z: 7.40217914e-08}
+  m_LocalScale: {x: .359841585, y: 1, z: .530087173}
   m_Children: []
   m_Father: {fileID: 400002}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!4 &400002
 Transform:
   m_ObjectHideFlags: 1
@@ -72,6 +89,7 @@ Transform:
   m_LocalPosition: {x: 0, y: -.386846215, z: .528901041}
   m_LocalScale: {x: 1, y: 1, z: 2.77900004}
   m_Children:
+  - {fileID: 400006}
   - {fileID: 400000}
   m_Father: {fileID: 400004}
   m_RootOrder: 0
@@ -82,11 +100,23 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100004}
   m_LocalRotation: {x: -1.19209275e-07, y: .707107365, z: 4.00978763e-07, w: .707106292}
-  m_LocalPosition: {x: 4.95870638, y: .445467919, z: -14.4935684}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: .377296448, z: 1}
   m_Children:
   - {fileID: 400002}
   m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!4 &400006
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100006}
+  m_LocalRotation: {x: -.500000298, y: -.499999762, z: -.499999702, w: .500000358}
+  m_LocalPosition: {x: .568971336, y: .716731012, z: -0}
+  m_LocalScale: {x: .359841585, y: 1, z: .530087173}
+  m_Children: []
+  m_Father: {fileID: 400002}
   m_RootOrder: 0
 --- !u!23 &2300000
 Renderer:
@@ -139,12 +169,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: .100000001
+--- !u!114 &11400002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f529bbd5ba314434b2dcfe091889237, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentPoint: {fileID: 400000}
+  childPoints:
+  - {fileID: 400006}
+  buildBoardPrefab: {fileID: 100000, guid: 3baa0c5ea3f55437a9b6f4675d28cf49, type: 2}
+  stationPrefab: {fileID: 100000, guid: 92acbfd556bad4afbb332bdbe8bae97b, type: 2}
 --- !u!148 &14800000
 NetworkView:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100004}
+  m_Enabled: 1
+  m_StateSynchronization: 0
+  m_Observed: {fileID: 0}
+  m_ViewID:
+    m_ID: 0
+    m_Type: 0
+--- !u!148 &14800002
+NetworkView:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100002}
   m_Enabled: 1
   m_StateSynchronization: 0
   m_Observed: {fileID: 0}

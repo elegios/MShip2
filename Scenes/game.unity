@@ -1214,6 +1214,7 @@ GameObject:
   - 4: {fileID: 1192382381}
   - 114: {fileID: 1192382380}
   - 114: {fileID: 1192382379}
+  - 148: {fileID: 1192382382}
   m_Layer: 0
   m_Name: Network
   m_TagString: Untagged
@@ -1248,7 +1249,8 @@ MonoBehaviour:
   useNat: 0
   maxConnections: 10
   player: {fileID: 100000, guid: 7c7a85ff2c28740fcbd3a2084913551b, type: 2}
-  stationBase: {fileID: 100000, guid: 64d67d7bc2e66480ea227860d6fe55f1, type: 2}
+  station: {fileID: 100000, guid: 92acbfd556bad4afbb332bdbe8bae97b, type: 2}
+  startPlatform: {fileID: 100002, guid: e2c7784b1c31e4e85b5170b8531a524c, type: 2}
 --- !u!4 &1192382381
 Transform:
   m_ObjectHideFlags: 0
@@ -1261,6 +1263,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
+--- !u!148 &1192382382
+NetworkView:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1192382378}
+  m_Enabled: 1
+  m_StateSynchronization: 0
+  m_Observed: {fileID: 0}
+  m_ViewID:
+    m_ID: 7
+    m_Type: 1
 --- !u!1 &1242405599
 GameObject:
   m_ObjectHideFlags: 0
