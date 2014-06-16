@@ -30,6 +30,11 @@ public class StationLink : MonoBehaviour {
 		station.position = transform.position;
 		station.rotation = transform.rotation;
 		transform.parent = station;
+
+		Mass[] ms = GetComponentsInChildren<Mass>();
+		foreach (Mass m in ms) {
+			m.TransferMassTo(transform.root.rigidbody);
+		}
 	}
 
 	void ChildWillBeDestroyed(StationLink child) {
@@ -56,6 +61,7 @@ public class StationLink : MonoBehaviour {
 		}
 
 		children[i] = child;
+		child.GetComponent<Mass>().TransferMassTo(transform.root.rigidbody);
 		Destroy(buildBoards[i]);
 	}
 
@@ -64,8 +70,6 @@ public class StationLink : MonoBehaviour {
 			print("This function should only be called on the server");
 			return;
 		}
-
-		//TODO: transfer mass to the correct station when everything is split
 
 		for (int i = 0; i < children.Length; i++) {
 			if (children[i] != null)
@@ -86,7 +90,6 @@ public class StationLink : MonoBehaviour {
 		if (parent != null) {
 			networkView.RPC("NetDestroy", RPCMode.AllBuffered, buildBoards[buildBoards.Length - 1].networkView.viewID);
 			this.parent = parent;
-			//TODO: setup mass
 		}
 	}
 
