@@ -22,7 +22,7 @@ public class Projectile : MonoBehaviour {
 				linkToDestroy = other.GetComponent<RemoteStationLink>().link;
 		}
 		if (linkToDestroy != null) {
-			linkToDestroy.DoDestroy(rigidbody);
+			linkToDestroy.DoDestroy(transform.position, -collision.relativeVelocity * rigidbody.mass);
 		} else {
 			print("collided with something else, destroying self anyway");
 		}

@@ -15,17 +15,17 @@ public class StationLink : MonoBehaviour {
 	private StationLink[] children;
 	private StationLink parent;
 
-	void ParentWillBeDestroyed() {
+	void ParentWillBeDestroyed(Vector3 position, Vector3 impulse) {
 		transform.parent = null;
 
 		GameObject station = (GameObject) Network.Instantiate(stationPrefab, transform.position, transform.rotation, 0);
-		networkView.RPC("SetupStation", RPCMode.AllBuffered, station.networkView.viewID);
+		networkView.RPC("SetupStation", RPCMode.AllBuffered, station.networkView.viewID, position, impulse);
 
 		GameObject board = (GameObject) Network.Instantiate(buildBoardPrefab, Vector3.zero, Quaternion.identity, 0);
 		networkView.RPC("SetupBuildBoard", RPCMode.AllBuffered, childPoints.Length, board.networkView.viewID);
 	}
 	[RPC]
-	void SetupStation(NetworkViewID stationID) {
+	void SetupStation(NetworkViewID stationID, Vector3 position, Vector3 impulse) {
 		Transform station = NetworkView.Find(stationID).transform;
 		station.position = transform.position;
 		station.rotation = transform.rotation;
@@ -35,6 +35,8 @@ public class StationLink : MonoBehaviour {
 		foreach (Mass m in ms) {
 			m.TransferMassTo(transform.root.rigidbody);
 		}
+
+		station.rigidbody.AddForceAtPosition(impulse, position, ForceMode.Impulse);
 	}
 
 	void ChildWillBeDestroyed(StationLink child) {
@@ -65,7 +67,7 @@ public class StationLink : MonoBehaviour {
 		Destroy(buildBoards[i]);
 	}
 
-	public void DoDestroy(Rigidbody projectile) {
+	public void DoDestroy(Vector3 position, Vector3 impulse) {
 		if (!Network.isServer) {
 			print("This function should only be called on the server");
 			return;
@@ -73,7 +75,7 @@ public class StationLink : MonoBehaviour {
 
 		for (int i = 0; i < children.Length; i++) {
 			if (children[i] != null)
-				children[i].ParentWillBeDestroyed();
+				children[i].ParentWillBeDestroyed(position, impulse);
 		}
 		if (parent != null) {
 			parent.ChildWillBeDestroyed(this);
@@ -101,7 +103,7 @@ public class StationLink : MonoBehaviour {
 	[RPC]
 	void NetDestroyThis() {
 		GetComponent<Mass>().TransferMassTo(null);
-		Destroy(gameObject);
+		Destroy(transform.parent.gameObject);
 	}
 
 	void Awake() {
