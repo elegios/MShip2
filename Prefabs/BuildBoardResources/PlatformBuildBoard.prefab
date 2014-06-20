@@ -129,7 +129,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeTillAutoClose: 60
   buttonPrefabs:
+  - {fileID: 100000, guid: 8c6ff8964e27b4a9d9ec02d8531ca5a3, type: 2}
   - {fileID: 100000, guid: 355f1cf39433d49478a4c777a0837549, type: 2}
+  - {fileID: 100000, guid: 59fb191bb112c44988efdc9672f3f588, type: 2}
   buildButtonPrefab: {fileID: 100000, guid: 754b8b2193b8a4f019333f12a2b6bdf6, type: 2}
 --- !u!114 &11400002
 MonoBehaviour:
