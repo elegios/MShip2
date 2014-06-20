@@ -5,9 +5,11 @@ using System.Collections;
 public class Projectile : MonoBehaviour {
 
 	public float force = 10;
+	public float lifeTime = 60;
 
 	void Start() {
 		rigidbody.AddForce(transform.up * force, ForceMode.VelocityChange);
+		Destroy(gameObject, lifeTime);
 	}
 
 	void OnCollisionEnter(Collision collision) {
