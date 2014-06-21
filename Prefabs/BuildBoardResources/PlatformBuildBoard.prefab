@@ -133,6 +133,7 @@ MonoBehaviour:
   - {fileID: 100000, guid: 355f1cf39433d49478a4c777a0837549, type: 2}
   - {fileID: 100000, guid: 59fb191bb112c44988efdc9672f3f588, type: 2}
   buildButtonPrefab: {fileID: 100000, guid: 754b8b2193b8a4f019333f12a2b6bdf6, type: 2}
+  defaultChoice: 1
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

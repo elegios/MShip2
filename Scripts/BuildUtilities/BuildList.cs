@@ -50,7 +50,7 @@ public class BuildList : MonoBehaviour {
 		float yPos = minHeight + rowHeight * ((buildButtonPrefabs.Length - 1) / columns + 1);
 
 		for (int i = 0; i < buildButtonPrefabs.Length; i++) {
-			Vector3 position = transform.TransformPoint(new Vector3(xPos + (i % columns), yPos + i / columns, 0));
+			Vector3 position = transform.TransformPoint(new Vector3(xPos + (i % columns) - 0.5f, yPos + i / columns, 0));
 			buildButtons[i] = (GameObject) Instantiate(buildButtonPrefabs[i], position, transform.rotation);
 
 			RemoteActivatable act = buildButtons[i].GetComponent<RemoteActivatable>();

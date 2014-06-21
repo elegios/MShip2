@@ -8,6 +8,7 @@ public class BuildBoard : MonoBehaviour {
 
 	public GameObject[] buttonPrefabs;
 	public GameObject buildButtonPrefab;
+	public int defaultChoice;
 
 	private ToggleButton[] buttons;
 	private PressButton buildButton;
@@ -106,7 +107,7 @@ public class BuildBoard : MonoBehaviour {
 			buildButton = buildGO.GetComponent<PressButton>();
 			buildGO.GetComponent<RemoteActivatable>().target = gameObject;
 
-			buttons[0].on = true;
+			buttons[defaultChoice].on = true;
 			ResetTimer();
 
 		} else {
