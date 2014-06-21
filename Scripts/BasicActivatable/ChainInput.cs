@@ -7,14 +7,15 @@ public class ChainInput : MonoBehaviour {
 	public GameObject target;
 	public ChainOutput[] outputs;
 
-	public void OnChainActivate(bool fromChain) {
+	public void OnChainActivate() {
 		if (!Network.isServer) {
 			return;
 		}
 
-		if (fromChain) {
-			target.SendMessage("OnActivate");
-		}
+		target.SendMessage("OnActivate");
+		networkView.RPC("DoChainActivate", RPCMode.All);
+	}
+	public void StartChain() {
 		networkView.RPC("DoChainActivate", RPCMode.All);
 	}
 	[RPC]
@@ -30,7 +31,7 @@ public class ChainInput : MonoBehaviour {
 
 		p.selectedChainOutput.targetInput = this;
 		networkView.RPC("DoConnection", RPCMode.OthersBuffered, p.selectedChainOutput.networkView.viewID);
-		
+
 		p.selectedChainOutput = null;
 	}
 	[RPC]

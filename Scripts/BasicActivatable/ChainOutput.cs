@@ -42,7 +42,7 @@ public class ChainOutput : MonoBehaviour {
 
 		if (activateProjectile.position == targetInput.transform.position) {
 			Destroy(activateProjectile.gameObject);
-			targetInput.OnChainActivate(true);
+			targetInput.OnChainActivate();
 		}
 	}
 

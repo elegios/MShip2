@@ -6,7 +6,7 @@ public class ChainActivator : MonoBehaviour {
 	public ChainInput input;
 
 	void OnActivate() {
-		input.OnChainActivate(false);
+		input.StartChain();
 	}
 
 }
