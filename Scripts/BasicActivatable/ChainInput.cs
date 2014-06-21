@@ -29,7 +29,14 @@ public class ChainInput : MonoBehaviour {
 			return;
 
 		p.selectedChainOutput.targetInput = this;
+		networkView.RPC("DoConnection", RPCMode.OthersBuffered, p.selectedChainOutput.networkView.viewID);
+		
 		p.selectedChainOutput = null;
+	}
+	[RPC]
+	void DoConnection(NetworkViewID outputID) {
+		GameObject output = NetworkView.Find(outputID).gameObject;
+		output.GetComponent<ChainOutput>().targetInput = this;
 	}
 
 }
