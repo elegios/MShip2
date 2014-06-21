@@ -6,6 +6,11 @@ public class Activator : MonoBehaviour {
 	public float maxDistance = 7;
 
 	private string toShow;
+	private Player player;
+
+	void Awake() {
+		player = transform.parent.GetComponent<Player>();
+	}
 
 	void Update() {
 		RaycastHit hit;
@@ -19,7 +24,7 @@ public class Activator : MonoBehaviour {
 			toShow = desc.text;
 
 		if (Input.GetButtonDown(Co.ACTIVATE))
-			hit.transform.SendMessage("OnActivate");
+			hit.transform.SendMessage("OnActivate", player);
 	}
 
 	void OnGUI() {

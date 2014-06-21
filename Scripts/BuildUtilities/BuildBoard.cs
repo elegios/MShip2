@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections;
-//TODO: rewrite of the entire thing pretty much
+
 [RequireComponent(typeof(NetworkView))]
 public class BuildBoard : MonoBehaviour {
 
