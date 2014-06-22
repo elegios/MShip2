@@ -31,7 +31,7 @@ public class ChainInput : MonoBehaviour {
 		if (p.selectedChainOutput == null)
 			return;
 
-		p.selectedChainOutput.targetInput = this;
+		p.selectedChainOutput.targetInput = transform;
 		networkView.RPC("DoConnection", RPCMode.OthersBuffered, p.selectedChainOutput.networkView.viewID);
 
 		p.selectedChainOutput = null;
@@ -39,7 +39,7 @@ public class ChainInput : MonoBehaviour {
 	[RPC]
 	void DoConnection(NetworkViewID outputID) {
 		GameObject output = NetworkView.Find(outputID).gameObject;
-		output.GetComponent<ChainOutput>().targetInput = this;
+		output.GetComponent<ChainOutput>().targetInput = transform;
 	}
 
 }
