@@ -12,7 +12,9 @@ public class ChainInput : MonoBehaviour {
 			return;
 		}
 
-		target.SendMessage("OnActivate");
+		if (target != null) {
+			target.SendMessage("OnActivate");
+		}
 		networkView.RPC("DoChainActivate", RPCMode.All);
 	}
 	public void StartChain() {
