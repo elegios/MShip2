@@ -23,6 +23,7 @@ public class Activator : MonoBehaviour {
 		if (desc != null)
 			toShow = desc.text;
 
+		hit.transform.SendMessage("OnActivatorHover", player, SendMessageOptions.DontRequireReceiver);
 		if (Input.GetButtonDown(Co.ACTIVATE))
 			hit.transform.SendMessage("OnActivate", player);
 	}

@@ -5,9 +5,17 @@ using System.Collections;
 public class ChainOutput : MonoBehaviour {
 
 	public GameObject activateProjectilePrefab;
+	public Transform connection;
 
 	[HideInInspector]
 	public Transform targetInput;
+
+	private bool showConnection;
+	private float baseZScale;
+
+	void Awake() {
+		baseZScale = connection.localScale.z;
+	}
 
 	public void OnChainActivate() {
 		if (targetInput == null)
@@ -25,6 +33,25 @@ public class ChainOutput : MonoBehaviour {
 
 	void OnActivate(Player p) {
 		p.selectedChainOutput = this;
+	}
+
+	void OnActivatorHover() {
+		showConnection = true;
+	}
+
+	void Update() {
+		if (targetInput == null) {
+			showConnection = false;
+		}
+		if (!showConnection) {
+			connection.GetChild(0).renderer.enabled = false;
+			return;
+		}
+		connection.GetChild(0).renderer.enabled = true;
+
+		connection.LookAt(targetInput);
+		connection.localScale = new Vector3(connection.localScale.x, connection.localScale.y, baseZScale * (targetInput.position - transform.position).magnitude);
+		showConnection = false;
 	}
 
 }
