@@ -1,11 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 [RequireComponent(typeof(NetworkView))]
 public class ChainInput : MonoBehaviour {
 
 	public GameObject target;
 	public ChainOutput[] outputs;
+
+	private List<ChainOutput> targetingThis;
+
+	void Awake() {
+		targetingThis = new List<ChainOutput>();
+	}
 
 	public void OnChainActivate() {
 		if (!Network.isServer) {
@@ -32,14 +39,28 @@ public class ChainInput : MonoBehaviour {
 			return;
 
 		p.selectedChainOutput.targetInput = transform;
+		targetingThis.Add(p.selectedChainOutput);
+		p.selectedChainOutput.SetConnectionVisibility(true);
 		networkView.RPC("DoConnection", RPCMode.OthersBuffered, p.selectedChainOutput.networkView.viewID);
 
 		p.selectedChainOutput = null;
 	}
 	[RPC]
 	void DoConnection(NetworkViewID outputID) {
-		GameObject output = NetworkView.Find(outputID).gameObject;
-		output.GetComponent<ChainOutput>().targetInput = transform;
+		ChainOutput output = NetworkView.Find(outputID).gameObject.GetComponent<ChainOutput>();
+
+		output.targetInput = transform;
+		targetingThis.Add(output);
+	}
+
+	public void DisconnectOutput(ChainOutput output) {
+		targetingThis.Remove(output);
+	}
+
+	void OnMouseHoverChanged(bool hover) {
+		foreach (ChainOutput output in targetingThis) {
+			output.SetConnectionVisibility(hover);
+		}
 	}
 
 }

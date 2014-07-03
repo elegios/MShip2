@@ -32,17 +32,32 @@ public class ChainOutput : MonoBehaviour {
 
 	void OnActivate(Player p) {
 		p.selectedChainOutput = this;
+		networkView.RPC("DisconnectMe", RPCMode.AllBuffered);
 	}
-
-	void OnMouseHoverChanged(bool hover) {
+	[RPC]
+	void DisconnectMe() {
 		if (targetInput == null)
 			return;
 
-		connection.GetChild(0).renderer.enabled = hover;
-		if (hover) {
+		targetInput.GetComponent<ChainInput>().DisconnectOutput(this);
+		SetConnectionVisibility(false);
+		targetInput = null;
+	}
+
+	void OnMouseHoverChanged(bool hover) {
+		SetConnectionVisibility(hover);
+	}
+
+	public void SetConnectionVisibility(bool visible) {
+		if (targetInput == null)
+			return;
+
+		connection.GetChild(0).renderer.enabled = visible;
+		if (visible) {
 			connection.LookAt(targetInput);
 			connection.localScale = new Vector3(connection.localScale.x, connection.localScale.y, baseZScale * (targetInput.position - transform.position).magnitude);
 		}
+
 	}
 
 }
