@@ -10,7 +10,6 @@ public class ChainOutput : MonoBehaviour {
 	[HideInInspector]
 	public Transform targetInput;
 
-	private bool showConnection;
 	private float baseZScale;
 
 	void Awake() {
@@ -35,23 +34,15 @@ public class ChainOutput : MonoBehaviour {
 		p.selectedChainOutput = this;
 	}
 
-	void OnActivatorHover() {
-		showConnection = true;
-	}
-
-	void Update() {
-		if (targetInput == null) {
-			showConnection = false;
-		}
-		if (!showConnection) {
-			connection.GetChild(0).renderer.enabled = false;
+	void OnMouseHoverChanged(bool hover) {
+		if (targetInput == null)
 			return;
-		}
-		connection.GetChild(0).renderer.enabled = true;
 
-		connection.LookAt(targetInput);
-		connection.localScale = new Vector3(connection.localScale.x, connection.localScale.y, baseZScale * (targetInput.position - transform.position).magnitude);
-		showConnection = false;
+		connection.GetChild(0).renderer.enabled = hover;
+		if (hover) {
+			connection.LookAt(targetInput);
+			connection.localScale = new Vector3(connection.localScale.x, connection.localScale.y, baseZScale * (targetInput.position - transform.position).magnitude);
+		}
 	}
 
 }

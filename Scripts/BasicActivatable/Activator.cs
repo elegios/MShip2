@@ -8,6 +8,8 @@ public class Activator : MonoBehaviour {
 	private string toShow;
 	private Player player;
 
+	private Transform hoveredTransform;
+
 	void Awake() {
 		player = transform.parent.GetComponent<Player>();
 	}
@@ -16,8 +18,11 @@ public class Activator : MonoBehaviour {
 		RaycastHit hit;
 		if (!Physics.Raycast(transform.position, transform.forward, out hit, maxDistance, Co.LAYER_CONTROLS)) {
 			toShow = "";
+			SetHoveredTransform(null);
 			return;
 		}
+
+		SetHoveredTransform(hit.transform);
 
 		DescriptiveText desc = hit.transform.GetComponent<DescriptiveText>();
 		if (desc != null)
@@ -26,6 +31,19 @@ public class Activator : MonoBehaviour {
 		hit.transform.SendMessage("OnActivatorHover", player, SendMessageOptions.DontRequireReceiver);
 		if (Input.GetButtonDown(Co.ACTIVATE))
 			hit.transform.SendMessage("OnActivate", player);
+	}
+
+	void SetHoveredTransform(Transform t) {
+		if (hoveredTransform == t)
+			return;
+
+		if (hoveredTransform != null)
+			hoveredTransform.SendMessage("OnMouseHoverChanged", false, SendMessageOptions.DontRequireReceiver);
+
+		hoveredTransform = t;
+
+		if (hoveredTransform != null)
+			hoveredTransform.SendMessage("OnMouseHoverChanged", true, SendMessageOptions.DontRequireReceiver);
 	}
 
 	void OnGUI() {
