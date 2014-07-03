@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 
 [RequireComponent(typeof(NetworkView))]
+[RequireComponent(typeof(Rigidbody))]
 public class Projectile : MonoBehaviour {
 
 	public float force = 10;
@@ -12,19 +13,23 @@ public class Projectile : MonoBehaviour {
 		Destroy(gameObject, lifeTime);
 	}
 
-	void OnCollisionEnter(Collision collision) {
+	void OnTriggerEnter(Collider collider) {
 		if (!Network.isServer)
 			return;
 
+		Debug.Break();
+		Debug.DrawRay(transform.position, rigidbody.velocity - collider.transform.root.rigidbody.velocity);
+
 		networkView.RPC("NetDestroyThis", RPCMode.All);
-		GameObject other = collision.contacts[0].otherCollider.gameObject;
+		GameObject other = collider.gameObject;
 		StationLink linkToDestroy = other.GetComponent<StationLink>();
 		if (linkToDestroy == null) {
 			if (other.GetComponent<RemoteStationLink>() != null)
 				linkToDestroy = other.GetComponent<RemoteStationLink>().link;
 		}
 		if (linkToDestroy != null) {
-			linkToDestroy.DoDestroy(transform.position, -collision.relativeVelocity * rigidbody.mass);
+
+			linkToDestroy.DoDestroy(transform.position, (rigidbody.velocity - other.transform.root.rigidbody.velocity) * rigidbody.mass);
 		} else {
 			print("collided with something else, destroying self anyway");
 		}

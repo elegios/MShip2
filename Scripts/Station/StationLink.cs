@@ -36,10 +36,10 @@ public class StationLink : MonoBehaviour {
 			m.TransferMassTo(transform.root.rigidbody);
 		}
 
-		station.rigidbody.AddForceAtPosition(impulse, position, ForceMode.Impulse);
+		Push(position, impulse);
 	}
 
-	void ChildWillBeDestroyed(StationLink child) {
+	void ChildWillBeDestroyed(StationLink child, Vector3 position, Vector3 impulse) {
 		int i = 0;
 		while (i < childPoints.Length && children[i] != child)
 			i++;
@@ -48,8 +48,14 @@ public class StationLink : MonoBehaviour {
 			return;
 		}
 
+		networkView.RPC("Push", RPCMode.All, position, impulse);
+
 		GameObject board = (GameObject) Network.Instantiate(buildBoardPrefab, Vector3.zero, Quaternion.identity, 0);
 		networkView.RPC("SetupBuildBoard", RPCMode.AllBuffered, i, board.networkView.viewID);
+	}
+	[RPC]
+	void Push(Vector3 position, Vector3 impulse) {
+		transform.root.rigidbody.AddForceAtPosition(impulse, position, ForceMode.Impulse);
 	}
 
 	//Must be called from code that is run for all players
@@ -78,7 +84,7 @@ public class StationLink : MonoBehaviour {
 				children[i].ParentWillBeDestroyed(position, impulse);
 		}
 		if (parent != null) {
-			parent.ChildWillBeDestroyed(this);
+			parent.ChildWillBeDestroyed(this, position, impulse);
 		}
 		networkView.RPC("NetDestroyThis", RPCMode.AllBuffered);
 	}
