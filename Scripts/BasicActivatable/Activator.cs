@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
+[RequireComponent(typeof(SphereCollider))]
 public class Activator : MonoBehaviour {
 
 	public float maxDistance = 7;
@@ -10,16 +12,33 @@ public class Activator : MonoBehaviour {
 
 	private Transform hoveredTransform;
 
-	void Awake() {
-		player = transform.parent.GetComponent<Player>();
-	}
+	private List<Collider> raycastColliders;
 
 	void Update() {
-		RaycastHit hit;
-		if (!Physics.Raycast(transform.position, transform.forward, out hit, maxDistance, Co.LAYER_CONTROLS)) {
-			toShow = "";
-			SetHoveredTransform(null);
+		raycastColliders.RemoveAll( c => c == null );
+
+		if (raycastColliders.Count == 0)
 			return;
+
+		raycastColliders.Sort(
+			(one, two)
+				=> (one.transform.position - transform.position).sqrMagnitude.CompareTo(
+					 (two.transform.position - transform.position).sqrMagnitude)
+			);
+
+		Ray ray = new Ray(transform.position, transform.forward);
+		RaycastHit hit = new RaycastHit(); //Compiler pleasing, the uses of hit will never happen without it being set
+
+		for (int i = 0; i < raycastColliders.Count; i++) {
+			if (raycastColliders[i].Raycast(ray, out hit, maxDistance)) {
+				break;
+			}
+			if (i == raycastColliders.Count - 1) {
+				//No hit
+				toShow = "";
+				SetHoveredTransform(null);
+				return;
+			}
 		}
 
 		SetHoveredTransform(hit.transform);
@@ -53,6 +72,23 @@ public class Activator : MonoBehaviour {
 			return;
 
 		GUILayout.Label(toShow);
+	}
+
+	void Awake() {
+		player = transform.parent.GetComponent<Player>();
+		raycastColliders = new List<Collider>();
+	}
+
+	void Start() {
+		((SphereCollider) collider).radius = maxDistance;
+	}
+
+	void OnTriggerEnter(Collider other) {
+		raycastColliders.Add(other);
+	}
+
+	void OnTriggerExit(Collider other) {
+		raycastColliders.Remove(other);
 	}
 
 }
