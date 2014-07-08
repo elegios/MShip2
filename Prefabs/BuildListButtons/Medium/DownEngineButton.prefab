@@ -12,7 +12,6 @@ GameObject:
   - 65: {fileID: 6500000}
   - 23: {fileID: 2300000}
   - 114: {fileID: 11400004}
-  - 114: {fileID: 11400002}
   - 54: {fileID: 5400000}
   - 114: {fileID: 11400000}
   - 114: {fileID: 11400006}
@@ -103,18 +102,6 @@ MonoBehaviour:
   normalScale: .5
   pressScale: .400000006
   changeSpeed: 7
---- !u!114 &11400002
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 052df1c5be6e24d95bcdf0ef247a56e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  text: Build Down Engine
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -141,6 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   constructible: {fileID: 100000, guid: 91eb90d4e0ece4e559560e8369518dbb, type: 2}
+  text: Down Engine
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

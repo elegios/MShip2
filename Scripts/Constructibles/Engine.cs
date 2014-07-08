@@ -2,7 +2,17 @@ using UnityEngine;
 using System.Collections;
 
 [RequireComponent(typeof(NetworkView))]
-public class Engine : MShipMono {
+public class Engine : MShipMono, IDescriptiveText {
+
+	public string text {
+		get {
+			if (on) {
+				return "Turn off engine";
+			} else {
+				return "Turn on engine";
+			}
+		}
+	}
 
 	public float strength = 20;
 	public ParticleSystem onEffect;

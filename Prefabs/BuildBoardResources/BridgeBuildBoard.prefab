@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 052df1c5be6e24d95bcdf0ef247a56e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: Toggle Build Mode
+  text: Build Bridge
 --- !u!148 &14800000
 NetworkView:
   m_ObjectHideFlags: 1

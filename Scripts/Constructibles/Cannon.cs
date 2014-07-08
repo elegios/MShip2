@@ -2,7 +2,13 @@ using UnityEngine;
 using System.Collections;
 
 [RequireComponent(typeof(NetworkView))]
-public class Cannon : MShipMono {
+public class Cannon : MShipMono, IDescriptiveText {
+
+	public string text {
+		get {
+			return "Fire";
+		}
+	}
 
 	public GameObject projectile;
 	public float spawnDist = 5;

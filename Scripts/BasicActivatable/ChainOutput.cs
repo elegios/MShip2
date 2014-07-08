@@ -2,7 +2,13 @@
 using System.Collections;
 
 [RequireComponent(typeof(NetworkView))]
-public class ChainOutput : MShipMono {
+public class ChainOutput : MShipMono, IDescriptiveText {
+
+	public string text {
+		get {
+			return "Connect from here";
+		}
+	}
 
 	public GameObject activateProjectilePrefab;
 	public Transform connection;

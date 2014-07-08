@@ -43,7 +43,7 @@ public class Activator : MShipMono {
 
 		SetHoveredTransform(hit.transform);
 
-		DescriptiveText desc = hit.transform.GetComponent<DescriptiveText>();
+		IDescriptiveText desc = hit.transform.GetIComponent<IDescriptiveText>();
 		if (desc != null)
 			toShow = desc.text;
 

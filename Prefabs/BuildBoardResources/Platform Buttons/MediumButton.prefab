@@ -13,7 +13,6 @@ GameObject:
   - 23: {fileID: 2300000}
   - 114: {fileID: 11400004}
   - 114: {fileID: 11400002}
-  - 114: {fileID: 11400000}
   - 54: {fileID: 5400000}
   - 114: {fileID: 11400006}
   m_Layer: 11
@@ -89,18 +88,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 052df1c5be6e24d95bcdf0ef247a56e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  text: Medium Platform
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -141,6 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   constructible: {fileID: 100002, guid: e2c7784b1c31e4e85b5170b8531a524c, type: 2}
+  text: Medium Platform
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -14,7 +14,6 @@ GameObject:
   - 54: {fileID: 5400000}
   - 148: {fileID: 14800000}
   - 114: {fileID: 11400002}
-  - 114: {fileID: 11400000}
   m_Layer: 11
   m_Name: ChainInput
   m_TagString: Untagged
@@ -133,18 +132,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 052df1c5be6e24d95bcdf0ef247a56e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  text: Connect to here
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

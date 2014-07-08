@@ -66,9 +66,9 @@ GameObject:
   - 65: {fileID: 6500000}
   - 23: {fileID: 2300002}
   - 54: {fileID: 5400000}
-  - 114: {fileID: 11400002}
   - 114: {fileID: 11400000}
   - 114: {fileID: 11400018}
+  - 114: {fileID: 11400002}
   m_Layer: 11
   m_Name: ControlPanel
   m_TagString: Untagged
@@ -88,9 +88,9 @@ GameObject:
   - 65: {fileID: 6500002}
   - 23: {fileID: 2300004}
   - 54: {fileID: 5400002}
-  - 114: {fileID: 11400008}
   - 114: {fileID: 11400006}
   - 114: {fileID: 11400020}
+  - 114: {fileID: 11400008}
   m_Layer: 11
   m_Name: ControlPanel
   m_TagString: Untagged
@@ -137,7 +137,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: .0035982132, y: -1.36454344, z: .13806057}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400004}
@@ -377,10 +377,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 100006}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 052df1c5be6e24d95bcdf0ef247a56e9, type: 3}
+  m_Script: {fileID: 11500000, guid: f6bc9ae0de2c94832865c6bd1f38c1b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: Toggle Engine
+  target: {fileID: 400004}
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -416,10 +416,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 100008}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 052df1c5be6e24d95bcdf0ef247a56e9, type: 3}
+  m_Script: {fileID: 11500000, guid: f6bc9ae0de2c94832865c6bd1f38c1b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: Toggle Engine
+  target: {fileID: 400004}
 --- !u!114 &11400010
 MonoBehaviour:
   m_ObjectHideFlags: 1

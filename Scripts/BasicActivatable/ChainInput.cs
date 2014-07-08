@@ -3,7 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 
 [RequireComponent(typeof(NetworkView))]
-public class ChainInput : MShipMono {
+public class ChainInput : MShipMono, IDescriptiveText {
+
+	public string text {
+		get {
+			return "Connect to here";
+		}
+	}
 
 	public GameObject target;
 	public ChainOutput[] outputs;

@@ -28,8 +28,8 @@ GameObject:
   - 65: {fileID: 6500000}
   - 23: {fileID: 2300002}
   - 54: {fileID: 5400000}
-  - 114: {fileID: 11400004}
   - 114: {fileID: 11400002}
+  - 114: {fileID: 11400006}
   m_Layer: 11
   m_Name: ControlPanel
   m_TagString: Untagged
@@ -49,8 +49,8 @@ GameObject:
   - 65: {fileID: 6500002}
   - 23: {fileID: 2300004}
   - 54: {fileID: 5400002}
-  - 114: {fileID: 11400006}
   - 114: {fileID: 11400008}
+  - 114: {fileID: 11400004}
   m_Layer: 11
   m_Name: ControlPanel
   m_TagString: Untagged
@@ -102,7 +102,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: .00359654427, y: -2.03369093, z: -.0997934341}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400002}
@@ -326,25 +326,25 @@ MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100002}
+  m_GameObject: {fileID: 100004}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 052df1c5be6e24d95bcdf0ef247a56e9, type: 3}
+  m_Script: {fileID: 11500000, guid: f6bc9ae0de2c94832865c6bd1f38c1b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: Toggle Engine
+  target: {fileID: 400002}
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100004}
+  m_GameObject: {fileID: 100002}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 052df1c5be6e24d95bcdf0ef247a56e9, type: 3}
+  m_Script: {fileID: 11500000, guid: f6bc9ae0de2c94832865c6bd1f38c1b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: Toggle Engine
+  target: {fileID: 400002}
 --- !u!114 &11400008
 MonoBehaviour:
   m_ObjectHideFlags: 1

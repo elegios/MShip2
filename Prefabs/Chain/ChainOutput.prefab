@@ -30,7 +30,6 @@ GameObject:
   - 23: {fileID: 2300002}
   - 54: {fileID: 5400000}
   - 114: {fileID: 11400000}
-  - 114: {fileID: 11400002}
   - 148: {fileID: 14800000}
   m_Layer: 11
   m_Name: ChainOutput
@@ -90,7 +89,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1.11758709e-08, y: .614486992, z: -.324206471}
   m_LocalScale: {x: .200000003, y: .200000003, z: .200000003}
   m_Children:
   - {fileID: 400000}
@@ -233,18 +232,6 @@ MonoBehaviour:
     type: 2}
   connection: {fileID: 400006}
   targetInput: {fileID: 0}
---- !u!114 &11400002
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100002}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 052df1c5be6e24d95bcdf0ef247a56e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  text: Connect from here
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1
