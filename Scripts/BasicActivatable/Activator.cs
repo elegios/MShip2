@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 [RequireComponent(typeof(SphereCollider))]
-public class Activator : MonoBehaviour {
+public class Activator : MShipMono {
 
 	public float maxDistance = 7;
 

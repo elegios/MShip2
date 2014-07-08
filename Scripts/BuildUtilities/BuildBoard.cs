@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 
 [RequireComponent(typeof(NetworkView))]
-public class BuildBoard : MonoBehaviour {
+public class BuildBoard : MShipMono {
 
 	public float timeTillAutoClose = 60;
 

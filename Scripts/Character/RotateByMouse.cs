@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class RotateByMouse : MonoBehaviour {
+public class RotateByMouse : MShipMono {
 
 	public float horizontalFactor = 1;
 	public float verticalFactor = 1;

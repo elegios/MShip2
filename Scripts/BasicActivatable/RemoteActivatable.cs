@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class RemoteActivatable : MonoBehaviour {
+public class RemoteActivatable : MShipMono {
 
 	public GameObject target;
 	public string message;

@@ -2,7 +2,7 @@
 using System.Collections;
 
 [RequireComponent(typeof(NetworkView))]
-public class SyncRigidbody : MonoBehaviour {
+public class SyncRigidbody : MShipMono {
 	
 	private class ToSet {
 		public Vector3 pos;

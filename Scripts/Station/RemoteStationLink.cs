@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class RemoteStationLink : MonoBehaviour {
+public class RemoteStationLink : MShipMono {
 
 	public StationLink link;
 

@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 
 [RequireComponent(typeof(NetworkView))]
-public class BuildList : MonoBehaviour {
+public class BuildList : MShipMono {
 
 	public float minHeight = 1;
 	public int columns = 5;

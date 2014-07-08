@@ -2,7 +2,7 @@
 using System.Collections;
 
 [RequireComponent(typeof(NetworkView))]
-public class SyncTransform : MonoBehaviour {
+public class SyncTransform : MShipMono {
 
 	public bool syncPosition = true;
 	public bool syncRotation = true;

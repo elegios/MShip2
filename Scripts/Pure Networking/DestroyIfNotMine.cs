@@ -2,7 +2,7 @@
 using System.Collections;
 
 [RequireComponent(typeof(NetworkView))]
-public class DestroyIfNotMine : MonoBehaviour {
+public class DestroyIfNotMine : MShipMono {
 	
 	public GameObject toDestroy;
 

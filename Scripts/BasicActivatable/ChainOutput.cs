@@ -2,7 +2,7 @@
 using System.Collections;
 
 [RequireComponent(typeof(NetworkView))]
-public class ChainOutput : MonoBehaviour {
+public class ChainOutput : MShipMono {
 
 	public GameObject activateProjectilePrefab;
 	public Transform connection;

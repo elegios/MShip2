@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class DescriptiveText : MonoBehaviour {
+public class DescriptiveText : MShipMono {
 
 	public string text;
 

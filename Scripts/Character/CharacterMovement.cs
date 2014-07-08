@@ -3,7 +3,7 @@ using System.Collections;
 
 [RequireComponent(typeof(CharacterController))]
 [RequireComponent(typeof(NetworkView))]
-public class CharacterMovement : MonoBehaviour {
+public class CharacterMovement : MShipMono {
 
 	public float gravity = 1;
 	public float speedChangeFactor = 2;

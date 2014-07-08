@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class ToggleButton : MonoBehaviour {
+public class ToggleButton : MShipMono {
 
 	public float onScale = 0.4f;
 	public float offScale = 0.5f;

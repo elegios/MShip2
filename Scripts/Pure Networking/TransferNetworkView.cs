@@ -2,7 +2,7 @@
 using System.Collections;
 
 [RequireComponent(typeof(NetworkView))]
-public class TransferNetworkView : MonoBehaviour {
+public class TransferNetworkView : MShipMono {
 
 	public void TakeOwnership(NetworkView view) {
 		if (view.isMine)

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class NetworkManager : MonoBehaviour {
+public class NetworkManager : MShipMono {
 
 	public string ipaddress = "127.0.0.1";
 	public int port = 8000;

@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 
 [RequireComponent(typeof(NetworkView))]
-public class DirectionalBuilder : MonoBehaviour {
+public class DirectionalBuilder : MShipMono {
 
 	private const int NORTH = 0;
 	private const int EAST = 1;

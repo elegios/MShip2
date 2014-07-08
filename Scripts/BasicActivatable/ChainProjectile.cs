@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ChainProjectile : MonoBehaviour {
+public class ChainProjectile : MShipMono {
 
 	public float speed = 10;
 

@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 
 [RequireComponent(typeof(NetworkView))]
-public class Engine : MonoBehaviour {
+public class Engine : MShipMono {
 
 	public float strength = 20;
 	public ParticleSystem onEffect;

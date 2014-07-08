@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 [RequireComponent(typeof(NetworkView))]
-public class ChainInput : MonoBehaviour {
+public class ChainInput : MShipMono {
 
 	public GameObject target;
 	public ChainOutput[] outputs;

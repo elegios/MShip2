@@ -3,7 +3,7 @@ using System.Collections;
 
 [RequireComponent(typeof(NetworkView))]
 [RequireComponent(typeof(Rigidbody))]
-public class Projectile : MonoBehaviour {
+public class Projectile : MShipMono {
 
 	public float force = 10;
 	public float lifeTime = 60;

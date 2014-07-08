@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 
 [RequireComponent(typeof(NetworkView))]
-public class Cannon : MonoBehaviour {
+public class Cannon : MShipMono {
 
 	public GameObject projectile;
 	public float spawnDist = 5;

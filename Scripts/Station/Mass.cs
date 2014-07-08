@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class Mass : MonoBehaviour {
+public class Mass : MShipMono {
 
 	public float value = 1;
 

@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class PressButton : MonoBehaviour {
+public class PressButton : MShipMono {
 
 	public float normalScale = 0.5f;
 	public float pressScale = 0.4f;

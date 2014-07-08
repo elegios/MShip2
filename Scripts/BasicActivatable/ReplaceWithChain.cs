@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ReplaceWithChain : MonoBehaviour {
+public class ReplaceWithChain : MShipMono {
 
 	public Transform inputPoint;
 	public Transform[] outputPoints;

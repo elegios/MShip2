@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ChainActivator : MonoBehaviour {
+public class ChainActivator : MShipMono {
 
 	public ChainInput input;
 

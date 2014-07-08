@@ -3,7 +3,7 @@ using System.Collections;
 
 [RequireComponent(typeof(NetworkView))]
 [RequireComponent(typeof(Mass))]
-public class StationLink : MonoBehaviour {
+public class StationLink : MShipMono {
 
 	public Transform parentPoint;
 	public Transform[] childPoints;

@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 
 [RequireComponent(typeof(NetworkView))]
-public class ReplaceWithPrefab : MonoBehaviour {
+public class ReplaceWithPrefab : MShipMono {
 
 	public GameObject prefab;
 
